@@ -1,0 +1,2 @@
+nvidia-cutlass==3.5.1
+cuda-python==11.8.3

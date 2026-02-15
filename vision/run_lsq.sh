@@ -1,0 +1,31 @@
+#!/bin/bash
+#SBATCH --time 10-0
+#SBATCH -p vip
+#SBATCH --gres=gpu:4
+#SBATCH -c 24
+#SBATCH --mem=100G
+
+port=$(($RANDOM % 10000 + 10000))
+echo Using port ${port}
+
+export W_QUANT="LSQQuantizer"
+export A_QUANT="LSQQuantizer"
+export QKSV_QUANT="NoQuantizer"
+export W_QUANT_ARGS="{\"bits\": $1}"
+export A_QUANT_ARGS="{\"bits\": $1}"
+export QKSV_QUANT_ARGS="{}"
+
+python3 -m torch.distributed.launch \
+--master_port $port \
+--nproc_per_node=4 \
+--use_env main.py \
+--w_quant $W_QUANT \
+--a_quant $A_QUANT \
+--qksv_quant $QKSV_QUANT \
+--w_quant_args "$W_QUANT_ARGS" \
+--a_quant_args "$A_QUANT_ARGS" \
+--qksv_quant_args "$QKSV_QUANT_ARGS" \
+--num_workers 3 \
+--batch-size 64 \
+--dtype float32 \
+--model deit_tiny_patch16_224
