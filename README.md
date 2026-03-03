@@ -1,6 +1,8 @@
 # Boosting Entropy with Bell Box Quantization
 
-This repository contains the implementation of our paper "BBQ: Boosting Quantization Entropy with Bell Box Quantization". The paper is accepted at ICLR 2026. We provide scripts to recreate the tables and figures in our paper. 
+[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://arxiv.org/abs/2603.01599)
+
+This repository contains the implementation of our paper "Boosting Entropy with Bell Box Quantization", previously called "BBQ: Boosting Quantization Entropy with Bell Box Quantization". The paper is accepted at ICLR 2026. We provide scripts to recreate the tables and figures in our paper.
 
 # Setup 
 
@@ -253,3 +255,17 @@ cd vision;
 bash run_bbq_naive.sh 2 -0.5;
 ```
 Take note of the path to checkpoints produced by both runs, and update `plot.ipynb` with these paths and reexcute the cells that produced Figure 7.
+
+# Cite This Work
+
+```bibtex
+@misc{yang2026boostingentropybellbox,
+      title={Boosting Entropy with Bell Box Quantization}, 
+      author={Ningfeng Yang and Tor M. Aamodt},
+      year={2026},
+      eprint={2603.01599},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2603.01599}, 
+}
+```
